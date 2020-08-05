@@ -74,6 +74,13 @@ class PeliculasProvider {
 
     return cast.actores;
   }
+
+  Future<List<Pelicula>> buscarPelicula(String query) async {
+    final url = Uri.https(_url, '3/search/movie',
+        {'api_key': _apikey, 'language': _language, 'query': query});
+    //print(url);
+    return await _procesarRespuesta(url);
+  }
 }
 
 //https://api.themoviedb.org/3/movie/now_playing?api_key=44b4dd9539951955ae36000f72628228&language=es-Es
